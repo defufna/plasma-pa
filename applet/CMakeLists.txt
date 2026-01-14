@@ -1,5 +1,6 @@
 plasma_add_applet(org.kde.plasma.volume
     QML_SOURCES
+        AudioOutputChooser.qml
         DeviceListItem.qml
         HorizontalStackView.qml
         SmallToolButton.qml

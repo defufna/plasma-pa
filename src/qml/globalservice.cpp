@@ -1,19 +1,38 @@
 /*
-    SPDX-FileCopyrightText: 2023 Bharadwaj Raju <bharadwaj.raju777@protonmail.com>
+    SPDX-FileCopyrightText: 2023 Bharadwaj Raju
+   <bharadwaj.raju777@protonmail.com>
 
-    SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
+    SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR
+   LicenseRef-KDE-Accepted-LGPL
 */
 
 #include "globalservice.h"
 
 #include <QDBusConnection>
 #include <QDBusMessage>
+#include <QDebug>
 #include <QString>
+
+#include <KGlobalAccel>
+#include <KLocalizedString>
+#include <QAction>
 
 using namespace Qt::Literals::StringLiterals;
 
 constexpr QLatin1String OSD_DBUS_SERVICE = "org.kde.plasmashell"_L1;
 constexpr QLatin1String OSD_DBUS_PATH = "/org/kde/osdService"_L1;
+
+GlobalService::GlobalService(QObject *parent)
+    : QObject(parent)
+{
+    QAction *action = new QAction(i18n("Switch Audio Output"), this);
+    action->setObjectName(u"switch_audio_output"_s);
+    action->setProperty("componentDisplayName", i18n("Audio Volume"));
+
+    bool success = KGlobalAccel::self()->setGlobalShortcut(action, QKeySequence(Qt::CTRL | Qt::MetaModifier | Qt::Key_V));
+
+    connect(action, &QAction::triggered, this, &GlobalService::showAudioOutputChooser);
+}
 
 void GlobalService::globalMuteSinks()
 {

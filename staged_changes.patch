@@ -1,0 +1,27 @@
+diff --git a/applet/AudioOutputChooser.qml b/applet/AudioOutputChooser.qml
+index e97be434..1567cf57 100644
+--- a/applet/AudioOutputChooser.qml
++++ b/applet/AudioOutputChooser.qml
+@@ -44,6 +44,11 @@ Window {
+         id: delegate
+         width: ListView.view.width
+         
++        leftPadding: Kirigami.Units.largeSpacing
++        rightPadding: Kirigami.Units.largeSpacing
++        topPadding: Kirigami.Units.smallSpacing
++        bottomPadding: Kirigami.Units.smallSpacing
++
+         readonly property var pulseObject: model.PulseObject
+ 
+         // Highlight the current default device
+@@ -51,10 +56,6 @@ Window {
+ 
+         contentItem: RowLayout {
+             spacing: Kirigami.Units.mediumSpacing
+-            leftPadding: Kirigami.Units.largeSpacing
+-            rightPadding: Kirigami.Units.largeSpacing
+-            topPadding: Kirigami.Units.smallSpacing
+-            bottomPadding: Kirigami.Units.smallSpacing
+ 
+             PC3.Label {
+                 Layout.fillWidth: true

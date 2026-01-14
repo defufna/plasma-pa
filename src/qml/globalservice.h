@@ -1,7 +1,9 @@
 /*
-    SPDX-FileCopyrightText: 2023 Bharadwaj Raju <bharadwaj.raju777@protonmail.com>
+    SPDX-FileCopyrightText: 2023 Bharadwaj Raju
+   <bharadwaj.raju777@protonmail.com>
 
-    SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
+    SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR
+   LicenseRef-KDE-Accepted-LGPL
 */
 
 #ifndef GLOBALSERVICE_H
@@ -14,6 +16,9 @@ class GlobalService : public QObject
 {
     Q_OBJECT
 
+public:
+    GlobalService(QObject *parent = nullptr);
+
 public Q_SLOTS:
     static void globalMuteSinks();
     static void globalMuteSources();
@@ -21,6 +26,9 @@ public Q_SLOTS:
     static void volumeDown();
     static void volumeUpSmall();
     static void volumeDownSmall();
+
+Q_SIGNALS:
+    void showAudioOutputChooser();
 
 private:
     static void ensureKDEDModule();

@@ -254,6 +254,19 @@ PlasmoidItem {
         id: feedback
     }
 
+    Connections {
+        target: GlobalService
+        function onShowAudioOutputChooser() {
+            audioOutputChooser.visible = true
+        }
+    }
+
+    AudioOutputChooser {
+        id: audioOutputChooser
+        deviceModel: paSinkFilterModel
+        screenGeometry: Plasmoid.screenGeometry
+    }
+
     fullRepresentation: PlasmaExtras.Representation {
         id: fullRep
 
@@ -288,6 +301,8 @@ PlasmoidItem {
                 }
             }
         }
+
+
 
         header: PlasmaExtras.PlasmoidHeading {
             // Make this toolbar's buttons align vertically with the ones above
