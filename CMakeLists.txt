@@ -2,10 +2,10 @@ cmake_minimum_required(VERSION 3.16)
 
 project(plasma-volume-control)
 
-set(PROJECT_VERSION "6.5.4")
+set(PROJECT_VERSION "6.5.5")
 set(PROJECT_VERSION_MAJOR 6)
 
-set(PROJECT_DEP_VERSION "6.5.4")
+set(PROJECT_DEP_VERSION "6.5.5")
 set(QT_MIN_VERSION "6.9.0")
 set(KF6_MIN_VERSION "6.18.0")
 set(KDE_COMPILERSETTINGS_LEVEL "5.82")
